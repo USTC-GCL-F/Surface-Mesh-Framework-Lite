@@ -11,7 +11,7 @@ The program is used to load meshes and render using OpenGL. **This Lite version 
 ## Usage
 
 ```
-git clone https://github.com/USTC-GCL/SurfaceFrameworkLite
+git clone https://github.com/USTC-GCL-F/Surface-Mesh-Framework-Lite
 cd SurfaceFrameworkLite
 ```
 
