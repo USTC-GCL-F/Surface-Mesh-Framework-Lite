@@ -1,4 +1,4 @@
-# Mesh Viewer for Triangular Surfaces (Lite Version)
+# Framework for surface mesh processing (Lite Version)
 
 The program is used to load meshes and render using OpenGL. **This Lite version dose not have interactive features such as picking vertex and dargging vertex.**
 
