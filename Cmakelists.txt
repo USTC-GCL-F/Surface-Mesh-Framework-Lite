@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.7)
 project(SurfaceFrameworkLite)
 
+#设置不生成MinSizeRel;RelWithDebInfo
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
+
 add_definitions(/D_USE_MATH_DEFINES)
 
 #complier
@@ -49,12 +52,30 @@ include_directories(${EIGEN_PATH})
 include_directories(${OPENMESH_PATH})
 link_directories(${OPENMESH_LIB_PATH})
 
-file (GLOB SRCFILES
-    src/*.cpp
-    src/MeshViewer/*.cpp
+file (GLOB GUI_FILE
+    src/main.cpp
+    src/MeshViewer/MainViewerWidget.*
+    src/MeshParamWidget.*
+    src/surfacemeshprocessing.h
+    src/surfacemeshprocessing.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SRCFILES} ${QRC_FILES})
+file (GLOB MeshViewer_FILE
+    src/MeshViewer/InteractiveViewerWidget.*
+    src/MeshDefinition.*
+    src/MeshViewer/MeshViewerWidget.*
+    src/MeshViewer/QGLViewerWidget.*
+)
+
+add_executable(${PROJECT_NAME}
+    ${GUI_FILE}
+    ${MeshViewer_FILE}
+    ${QRC_FILES}
+)
+
+source_group(GUI FILES ${GUI_FILE})
+source_group(MeshViewer FILES ${MeshViewer_FILE})
+
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 add_custom_command(TARGET ${PROJECT_NAME}
 POST_BUILD
